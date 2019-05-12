@@ -1,6 +1,7 @@
 ﻿using Arcteryx.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,46 +17,27 @@ namespace Arcteryx.Utils
         public MainPage MainPg { get; private set; }
 
 
+      
+
+
         private AppManager()
         {
             Driver = new ChromeDriver();
-            MainPg = new MainPage(this);
+            Driver.Manage().Window.Maximize();
+
+            MainPg = new MainPage(this);  
         }
 
 
-        public AppManager GetInstance()
+        public static AppManager GetInstance()
         {
             if (Instance == null)
             {
                 Instance = new AppManager();
             }
-            return this;
+            return Instance;
         }
 
     }
 }
 
-
-
-
-
-public IWebDriver Driver { get; private set; }
-public LoginPage LoginPg { get; private set; }
-public DashboardPage DashboardPg { get; private set; }
-
-
-private ApplicationManager()
-{
-    Driver = new ChromeDriver();
-    LoginPg = new LoginPage(this);
-    DashboardPg = new DashboardPage(this);
-}
-
-public static ApplicationManager GetInstance()
-{
-    if (Instance == null)
-    {
-        Instance = new ApplicationManager();
-    }
-    return Instance;
-}
