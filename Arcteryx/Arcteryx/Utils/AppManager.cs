@@ -17,9 +17,6 @@ namespace Arcteryx.Utils
         public MainPage MainPg { get; private set; }
 
 
-      
-
-
         private AppManager()
         {
             Driver = new ChromeDriver();
@@ -37,7 +34,6 @@ namespace Arcteryx.Utils
             }
             return Instance;
         }
-
     }
 }
 

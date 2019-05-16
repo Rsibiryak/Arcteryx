@@ -19,7 +19,7 @@ namespace Arcteryx.Tests
         public void BeforeTest()
         {
             Manager = AppManager.GetInstance();
-            Manager.MainPg.OpenPage();
+            Manager.MainPg.OpenPage("Main");
             MainPg = Manager.MainPg;
         }
 

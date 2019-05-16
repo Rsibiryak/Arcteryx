@@ -13,6 +13,8 @@ namespace Arcteryx.Pages
         #region
         private const String MEN_LABLE = "//span[@itemprop= 'name' and contains(text(),'Men')]";
         private const String WOMEN_LABLE = "//span[@itemprop= 'name' and contains(text(),'Women')]";
+        private const String EMPTY_CART_LABLE = "//h1[contains(text(), 'YOU CURRENTLY HAVE NO ITEMS IN YOUR SHOPPING CART.')]";
+        
 
         #endregion
 
@@ -20,40 +22,27 @@ namespace Arcteryx.Pages
         {
         }
 
-        public void MainMenuClick(String menuItem)
-        {
-            IWebElement shadowElement;
-
-            switch (menuItem)
-            {
-                case "Men":
-                    shadowElement = ExpandRootElement(MAIN_MENU_SECTION, MEN_MENU);
-                    shadowElement.Click();
-                    break;
-                case "Women":
-                    shadowElement = ExpandRootElement(MAIN_MENU_SECTION, WOMEN_MENU);
-                    shadowElement.Click();
-                    break;
-                default:
-                    break;
-            }
-
-        }
-
         public String GetLable(String menuType)
         {
             String locator;
 
-            if (menuType == "Men")
+            switch (menuType)
             {
-                locator = MEN_LABLE;
+                case "Men":
+                    locator = MEN_LABLE;
+                    break;
+                case "Women":
+                    locator = WOMEN_LABLE;
+                    break;
+                case "Cart":
+                    locator = EMPTY_CART_LABLE;
+                    break;
+                default:
+                    locator = "";
+                    break;
             }
-            else
-            {
-                locator = WOMEN_LABLE;
-            }
-                
-            return FindByXpath(locator).GetAttribute("textContent");
+
+            return FindByXpath(locator).GetAttribute("textContent");            
         }
     }
 }
