@@ -14,6 +14,7 @@ namespace Arcteryx.Tests
     {
         protected AppManager Manager { get; set; }
         protected MainPage MainPg { get; set; }
+        protected ItemsPage ItemPg { get; set; }
 
         [OneTimeSetUp]
         public void BeforeTest()
@@ -21,6 +22,7 @@ namespace Arcteryx.Tests
             Manager = AppManager.GetInstance();
             Manager.MainPg.OpenPage("Main");
             MainPg = Manager.MainPg;
+            ItemPg = Manager.ItemsPg;
         }
 
         [OneTimeTearDown]

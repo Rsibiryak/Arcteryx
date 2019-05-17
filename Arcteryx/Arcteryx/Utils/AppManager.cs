@@ -15,6 +15,7 @@ namespace Arcteryx.Utils
         public static AppManager Instance { get; private set; }
         public IWebDriver Driver { get; private set; }
         public MainPage MainPg { get; private set; }
+        public ItemsPage ItemsPg { get; private set; }
 
 
         private AppManager()
@@ -22,7 +23,8 @@ namespace Arcteryx.Utils
             Driver = new ChromeDriver();
             Driver.Manage().Window.Maximize();
 
-            MainPg = new MainPage(this);  
+            MainPg = new MainPage(this);
+            ItemsPg = new ItemsPage(this);
         }
 
 

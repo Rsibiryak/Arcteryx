@@ -25,6 +25,8 @@ namespace Arcteryx.Pages
         protected const String CART_SECTION = "#header-host";
         protected const String CART = "#cartInfo";
         protected const String CART_ITEMS = "#cartItems";
+        protected const String POPUP_WINDOW = "'//h1[contains(text(), 'BE THE FIRST TO KNOW')]'";
+        protected const String POPUP_WINDOW_CLOSE = "//div[@class = 'lity-close']";
         #endregion
 
         public PageBase(AppManager appManager)
@@ -55,6 +57,11 @@ namespace Arcteryx.Pages
         /// <returns></returns>
         public IWebElement FindByXpath(string xpath)
         {
+            if (IsElementPresent())
+            {
+                Driver.FindElement(By.XPath(POPUP_WINDOW_CLOSE)).Click();
+            }
+
             IWebElement element = Wait.Until<IWebElement>((d) =>
             {
                 return d.FindElement(By.XPath(xpath));
@@ -124,9 +131,22 @@ namespace Arcteryx.Pages
             */
         }
 
-        public Boolean CartIsEmpty()
+        public bool CartIsEmpty()
         {
             return false;
         }
+
+        public bool IsElementPresent()
+        {
+            try
+            {
+                return Driver.FindElement(By.XPath(POPUP_WINDOW)).Displayed;
+            }
+            catch (NoSuchElementException ex)
+            {
+                return false;
+            }
+        }
+
     }
 }
