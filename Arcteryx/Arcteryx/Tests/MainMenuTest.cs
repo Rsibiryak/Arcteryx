@@ -9,30 +9,40 @@ using System.Threading.Tasks;
 
 namespace Arcteryx.Tests
 {
+    /// <summary>
+    /// Check main menu buttons.
+    /// </summary>
     [TestFixture]
     class MainMenuTest : TestBase
     {
+        /// <summary>
+        /// Check "man" menu.
+        /// </summary>
         [Test]
         public void CheckMenuMen()
         {
-            MainPg.MainMenuClick("Men");
-            Assert.AreEqual("Men's", MainPg.GetLable("Men"));
+            ItemsPg.MainMenuClick("Men");
+            Assert.AreEqual("Men's", ItemsPg.GetLable("Men"));
         }
 
+        /// <summary>
+        /// Check "women" menu.
+        /// </summary>
         [Test]
         public void CheckMenuWomen()
         {
-            MainPg.MainMenuClick("Women");
-            Assert.AreEqual("Women's", MainPg.GetLable("Women"));
+            ItemsPg.MainMenuClick("Women");
+            Assert.AreEqual("Women's", ItemsPg.GetLable("Women"));
         }
 
+        /// <summary>
+        /// Check "cart" menu.
+        /// </summary>
         [Test]
         public void CheckMenuCart()
         {
-            MainPg.MainMenuClick("Cart");
-            Assert.AreEqual("YOU CURRENTLY HAVE NO ITEMS IN YOUR SHOPPING CART.", MainPg.GetLable("Cart"));
+            ItemsPg.MainMenuClick("Cart");
+            Assert.AreEqual("YOU CURRENTLY HAVE NO ITEMS IN YOUR SHOPPING CART.", ItemsPg.GetLable("Cart"));
         }
-
-
     }
 }

@@ -9,20 +9,23 @@ using System.Threading.Tasks;
 
 namespace Arcteryx.Tests
 {
+    /// <summary>
+    /// Class with common functions for all test.
+    /// </summary>
     [SetUpFixture]
     public abstract class TestBase
     {
         protected AppManager Manager { get; set; }
-        protected MainPage MainPg { get; set; }
-        protected ItemsPage ItemPg { get; set; }
+        protected ItemsPage ItemsPg { get; set; }
+        protected ItemPage ItemPg { get; set; }
 
         [OneTimeSetUp]
         public void BeforeTest()
         {
             Manager = AppManager.GetInstance();
-            Manager.MainPg.OpenPage("Main");
-            MainPg = Manager.MainPg;
-            ItemPg = Manager.ItemsPg;
+            Manager.ItemPg.OpenPage("Main");
+            ItemsPg = Manager.ItemsPg;
+            ItemPg = Manager.ItemPg;
         }
 
         [OneTimeTearDown]

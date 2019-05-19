@@ -10,19 +10,24 @@ using System.Threading.Tasks;
 
 namespace Arcteryx.Pages
 {
+    /// <summary>
+    /// Class with base functions for all pages.
+    /// </summary>
     public abstract class  PageBase
     {
         public IWebDriver Driver { get; private set;}
         public WebDriverWait Wait { get; set; }
         public String Url { get; private set;}
 
-    private const int TIMEOUT = 7;
+        private const int TIMEOUT = 7;
         
+        /// <summary>
+        /// Locators for web elements.
+        /// </summary>
         #region
         protected const String MAIN_MENU_SECTION = "arcteryx-outdoor-header";
         protected const String MEN_MENU = "#men>a";
         protected const String WOMEN_MENU = "#women>a";
-        protected const String CART_SECTION = "#header-host";
         protected const String CART = "#cartInfo";
         protected const String CART_ITEMS = "#cartItems";
         protected const String POPUP_WINDOW = "'//h1[contains(text(), 'BE THE FIRST TO KNOW')]'";
@@ -40,8 +45,8 @@ namespace Arcteryx.Pages
         /// <summary>
         /// Return element from shadow root.
         /// </summary>
-        /// <param name="shadowRootSelector"></param> Element containing shadow dom
-        /// <param name="elementSelector"></param> Desired item
+        /// <param name="shadowRootSelector"></param> Element containing shadow dom.
+        /// <param name="elementSelector"></param> Desired item.
         /// <returns></returns>
         public IWebElement ExpandRootElement(String shadowRootSelector, String elementSelector)
         {          
@@ -57,20 +62,18 @@ namespace Arcteryx.Pages
         /// <returns></returns>
         public IWebElement FindByXpath(string xpath)
         {
-            if (IsElementPresent())
-            {
-                Driver.FindElement(By.XPath(POPUP_WINDOW_CLOSE)).Click();
-            }
+                ClosePopupWindow();
 
-            IWebElement element = Wait.Until<IWebElement>((d) =>
-            {
-                return d.FindElement(By.XPath(xpath));
-            });
-            return element;
+                IWebElement element = Wait.Until<IWebElement>((d) =>
+                {
+                    return d.FindElement(By.XPath(xpath));
+                });
+
+                return element;    
         }
 
         /// <summary>
-        /// Open page.
+        /// Open new page.
         /// </summary>
         /// <param name="pageName"></param>
         public void OpenPage(String pageName)
@@ -85,17 +88,17 @@ namespace Arcteryx.Pages
                 case "MenShellJacket":
                     page = Url + ConfigurationManager.AppSettings["menShellJacket"];
                     break;
-                case " ":
-                    page = "";
-                    break;
                 default:
-                    page = "";
-                    break;
+                    throw new Exception("Incorrect page name!");
             }
 
             Driver.Navigate().GoToUrl(page);
         }
 
+        /// <summary>
+        /// Click on main menu button.
+        /// </summary>
+        /// <param name="menuItem"></param>
         public void MainMenuClick(String menuItem)
         {
             switch (menuItem)
@@ -107,46 +110,44 @@ namespace Arcteryx.Pages
                     ExpandRootElement(MAIN_MENU_SECTION, WOMEN_MENU).Click();
                     break;
                 case "Cart":
-                    ExpandRootElement(CART_SECTION, CART).Click();
+                    ExpandRootElement(MAIN_MENU_SECTION, CART).Click();
                     break;
                 default:
-                    break;
+                    throw new Exception("Incorrect menu name");
             }
         }
 
+        /// <summary>
+        /// Get  quantity of item from the cart.
+        /// </summary>
+        /// <returns></returns>
         public int GetCartItemsCount()
         {
-            return Convert.ToInt32(ExpandRootElement(CART_SECTION, CART_ITEMS).GetAttribute("innerText"));
-/*
             int itemsCount;
             try
-            {
-                itemsCount = Convert.ToInt32(ExpandRootElement(CART_SECTION, CART_ITEMS).GetAttribute("innerText"));
+            {             
+                itemsCount = Convert.ToInt32(ExpandRootElement(MAIN_MENU_SECTION, CART_ITEMS).GetAttribute("outerText"));
             }
             catch
             {
                 itemsCount = 0;
             }
             return itemsCount;
-            */
         }
 
-        public bool CartIsEmpty()
-        {
-            return false;
-        }
-
-        public bool IsElementPresent()
+        /// <summary>
+        /// Close popup window witch some time appear.
+        /// </summary>
+        public void ClosePopupWindow()
         {
             try
             {
-                return Driver.FindElement(By.XPath(POPUP_WINDOW)).Displayed;
+                Driver.FindElement(By.XPath(POPUP_WINDOW));
+                Driver.FindElement(By.XPath(POPUP_WINDOW_CLOSE)).Click();
             }
-            catch (NoSuchElementException ex)
+            catch 
             {
-                return false;
             }
         }
-
     }
 }
