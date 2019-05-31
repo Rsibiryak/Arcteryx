@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Arcteryx.Utils;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,8 @@ namespace Arcteryx.Tests
         [Test]
         public void AddCartTest()
         {
-            ItemPg.SelectSize("S").AddToCartClick().CloseCartWindow();
-            Assert.AreEqual(1, ItemPg.GetCartItemsCount());
+            ItemPg.SelectColor(Enums.Colors.RedBeach).SelectSize("S").AddToCartClick().CloseCartWindow();
+            Assert.AreEqual(1, ItemPg.GetCartItemsCount());        
         }
     }
 }

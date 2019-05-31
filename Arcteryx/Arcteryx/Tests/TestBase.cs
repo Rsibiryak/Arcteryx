@@ -1,11 +1,6 @@
 ﻿using Arcteryx.Pages;
 using Arcteryx.Utils;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arcteryx.Tests
 {
@@ -13,7 +8,7 @@ namespace Arcteryx.Tests
     /// Class with common functions for all test.
     /// </summary>
     [SetUpFixture]
-    public abstract class TestBase
+    public  class TestBase
     {
         protected AppManager Manager { get; set; }
         protected ItemsPage ItemsPg { get; set; }

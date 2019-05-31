@@ -1,10 +1,6 @@
 ﻿using Arcteryx.Utils;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arcteryx.Pages
 {
@@ -21,6 +17,7 @@ namespace Arcteryx.Pages
         protected const String ADD_TO_CART_BUTTON = "//input [@id='add-to-cart-button']";
         protected const String SELECT_COLOUR = "//div[@data-name and contains(@class, 'product-colour__thumbnail-container')]";
         protected const String EMPTY_CLICK = "//div[@class='product__above-the-fold']";
+        protected const String CHECKOUT_BUTTON = "//a [contains(text(), 'Secure Checkout')]";
         #endregion
 
         public ItemPage(AppManager appManager) : base(appManager)
@@ -45,6 +42,42 @@ namespace Arcteryx.Pages
                {
                 return true;
             }         
+        }
+
+        /// <summary>
+        /// Select item color.
+        /// </summary>
+        /// <param name="colors"></param>
+        /// <returns></returns>
+        public ItemPage SelectColor(Enum colors)
+        {
+            String locator;
+            String color;
+
+            switch(colors)
+            {
+                case Enums.Colors.RedBeach:
+                    color = "Red Beach";  
+                    break;
+                case Enums.Colors.HoweSound:
+                    color = "Red Beach";
+                    break;
+                case Enums.Colors.Black:
+                    color = "Black";
+                    break;
+                case Enums.Colors.Pilot:
+                    color = "Pilot";
+                    break;
+
+                default:
+                    color = "Red Beach";
+                    throw new Exception("Incorrect color");
+            }
+
+            locator = $"//div[@data-name='{color}']";
+            FindByXpath(locator).Click();
+
+            return this;
         }
 
         /// <summary>
@@ -112,6 +145,7 @@ namespace Arcteryx.Pages
         /// <returns></returns>
         public ItemPage CloseCartWindow()
         {
+            FindByXpath(CHECKOUT_BUTTON);
             FindByXpath(EMPTY_CLICK).Click();
             return this;
         }
