@@ -23,7 +23,7 @@ namespace Arcteryx.Tests
             ItemPg = Manager.ItemPg;
         }
 
-        [OneTimeTearDown]
+       // [OneTimeTearDown]
         public void AfterTest()
         {
             Manager.Driver.Quit();
