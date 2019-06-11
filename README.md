@@ -1,3 +1,2 @@
 # Arcteryx
-C#
-Autotest for https://arcteryx.com
+C# auto tests for https://arcteryx.com
