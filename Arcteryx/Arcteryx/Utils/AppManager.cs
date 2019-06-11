@@ -18,9 +18,11 @@ namespace Arcteryx.Utils
 
         private AppManager()
         {
-
+            //http://localhost:4444/grid/console
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
+            capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
+            //capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
+            // capabilities.SetCapability(CapabilityType.BrowserVersion, "67.0.1");
             string gridURL = "http://localhost:4444/wd/hub";
             Driver = new RemoteWebDriver(new Uri(gridURL), capabilities);
 
