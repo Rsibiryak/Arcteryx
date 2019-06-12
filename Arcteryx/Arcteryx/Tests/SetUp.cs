@@ -17,8 +17,7 @@ namespace Arcteryx.Tests
         [OneTimeTearDown]
         public void AfterTest()
         {
-            AppManager.GetInstance().Driver.Quit();
-            
+          //  AppManager.GetInstance().Driver.Quit();           
         }
     }
 }

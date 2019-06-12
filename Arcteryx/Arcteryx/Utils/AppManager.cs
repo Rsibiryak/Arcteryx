@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
+using System.Configuration;
 
 namespace Arcteryx.Utils
 {
@@ -12,28 +13,17 @@ namespace Arcteryx.Utils
         public IWebDriver Driver { get; private set; }
         public ItemsPage ItemsPg { get; private set; }
         public ItemPage ItemPg { get; private set; }
-        private string _gridURL = "http://localhost:4444/grid/console";       //"http://localhost:4444/wd/hub";
+        private string _gridURL = ConfigurationManager.AppSettings["seleniumGridURL"];
+        //http://localhost:4444/grid/console
 
-        // private DesiredCapabilities _capabilities;
-
-        private AppManager()
+        private AppManager(String browserName)
         {
-            //http://localhost:4444/grid/console
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
-            //capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
-            // capabilities.SetCapability(CapabilityType.BrowserVersion, "67.0.1");
-            string gridURL = "http://localhost:4444/wd/hub";
-            Driver = new RemoteWebDriver(new Uri(gridURL), capabilities);
+            //string browserName = "chrome";  //firefox
 
-            /*
-             *  ChromeOptions options = new ChromeOptions();
-            _driver = new RemoteWebDriver(new Uri("http://localhost:4445/wd/hub"), options);
-            _objectContainer.RegisterInstanceAs(_driver);
-             */
+            DesiredCapabilities capabilities = new DesiredCapabilities(); 
+            capabilities.SetCapability(CapabilityType.BrowserName, browserName);
 
-
-            //Driver = new ChromeDriver();
+            Driver = new RemoteWebDriver(new Uri(_gridURL), capabilities);
             Driver.Manage().Window.Maximize();
 
             ItemsPg = new ItemsPage(this);
@@ -41,11 +31,11 @@ namespace Arcteryx.Utils
         }
 
 
-        public static AppManager GetInstance()
+        public static AppManager GetInstance(String browserName)
         {
             if (Instance == null)
             {
-                Instance = new AppManager();
+                Instance = new AppManager(browserName);
             }
             return Instance;
         }
