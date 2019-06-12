@@ -7,13 +7,16 @@ namespace Arcteryx.Tests
     /// <summary>
     /// Class with common functions for all test.
     /// </summary>
-    
-    public abstract class TestBase
+    public class TestBase
+    [SetUpFixture]
+    public  class TestBase
     {
         protected AppManager Manager { get; set; }
         protected ItemsPage ItemsPg { get; set; }
         protected ItemPage ItemPg { get; set; }
 
+        public TestBase()
+        { }
 
         [OneTimeSetUp]
         public void BeforeTest()
@@ -23,7 +26,8 @@ namespace Arcteryx.Tests
             ItemsPg = Manager.ItemsPg;
             ItemPg = Manager.ItemPg;
         }
-       //[OneTimeTearDown]
+
+       // [OneTimeTearDown]
         public void AfterTest()
         {
             Manager.Driver.Quit();

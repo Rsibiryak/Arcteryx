@@ -84,5 +84,9 @@
     <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.74.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.74.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit.3.11.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.11.0\build\NUnit.props'))" />
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\selenium-server-standalone.3.9.1.1\build\selenium-server-standalone.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\selenium-server-standalone.3.9.1.1\build\selenium-server-standalone.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.Firefox.WebDriver.0.24.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Firefox.WebDriver.0.24.0\build\Selenium.Firefox.WebDriver.targets'))" />
   </Target>
+  <Import Project="..\packages\selenium-server-standalone.3.9.1.1\build\selenium-server-standalone.targets" Condition="Exists('..\packages\selenium-server-standalone.3.9.1.1\build\selenium-server-standalone.targets')" />
+  <Import Project="..\packages\Selenium.Firefox.WebDriver.0.24.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('..\packages\Selenium.Firefox.WebDriver.0.24.0\build\Selenium.Firefox.WebDriver.targets')" />
 </Project>

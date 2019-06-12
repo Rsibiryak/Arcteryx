@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+
 
 namespace Arcteryx.Utils
 {
     public  class Enums
     {
+        /// <summary>
+        /// All available sizes.
+        /// </summary>
         public enum SizeEnum
         {
            XS,
@@ -16,6 +16,14 @@ namespace Arcteryx.Utils
            L,
            XL,
            XXL
+        }
+
+        public enum Colors
+        {
+            RedBeach,
+            HoweSound,
+            Pilot,
+            Black
         }
     }
 }

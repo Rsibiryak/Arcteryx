@@ -1,11 +1,6 @@
-﻿using Arcteryx.Pages;
-using Arcteryx.Utils;
+﻿using Arcteryx.Utils;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arcteryx.Pages
 {

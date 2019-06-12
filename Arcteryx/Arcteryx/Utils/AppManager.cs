@@ -1,12 +1,8 @@
 ﻿using Arcteryx.Pages;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Remote;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arcteryx.Utils
 {
@@ -16,10 +12,28 @@ namespace Arcteryx.Utils
         public IWebDriver Driver { get; private set; }
         public ItemsPage ItemsPg { get; private set; }
         public ItemPage ItemPg { get; private set; }
+        private string _gridURL = "http://localhost:4444/grid/console";       //"http://localhost:4444/wd/hub";
+
+        // private DesiredCapabilities _capabilities;
 
         private AppManager()
         {
-            Driver = new ChromeDriver();
+            //http://localhost:4444/grid/console
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
+            //capabilities.SetCapability(CapabilityType.BrowserName, "chrome");
+            // capabilities.SetCapability(CapabilityType.BrowserVersion, "67.0.1");
+            string gridURL = "http://localhost:4444/wd/hub";
+            Driver = new RemoteWebDriver(new Uri(gridURL), capabilities);
+
+            /*
+             *  ChromeOptions options = new ChromeOptions();
+            _driver = new RemoteWebDriver(new Uri("http://localhost:4445/wd/hub"), options);
+            _objectContainer.RegisterInstanceAs(_driver);
+             */
+
+
+            //Driver = new ChromeDriver();
             Driver.Manage().Window.Maximize();
 
             ItemsPg = new ItemsPage(this);
