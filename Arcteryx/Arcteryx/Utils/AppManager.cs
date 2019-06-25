@@ -10,7 +10,7 @@ namespace Arcteryx.Utils
     public class AppManager
     {
         public static AppManager Instance { get; private set; }
-        public IWebDriver Driver { get; private set; }
+        public RemoteWebDriver Driver { get; private set; }
         public ItemsPage ItemsPg { get; private set; }
         public ItemPage ItemPg { get; private set; }
         private string _gridURL = ConfigurationManager.AppSettings["seleniumGridURL"];
@@ -20,8 +20,15 @@ namespace Arcteryx.Utils
         {
             string browserName = "chrome";  //firefox  chrome
 
-            DesiredCapabilities capabilities = new DesiredCapabilities(); 
-            capabilities.SetCapability(CapabilityType.BrowserName, browserName);
+           DesiredCapabilities capabilities = new DesiredCapabilities(); 
+           capabilities.SetCapability(CapabilityType.BrowserName, browserName);
+
+
+          //  var capabilities = new RemoteSessionSettings();
+           // capabilities.AddMetadataSetting("browserName", browserName);
+           // capabilities.AddMetadataSetting("platform", "Windows 10");
+            //RemoteWebDriver driver = new RemoteWebDriver(new Uri("http://hub.crossbrowsertesting.com:80/wd/hub"), capabilities);
+
 
             Driver = new RemoteWebDriver(new Uri(_gridURL), capabilities);
             Driver.Manage().Window.Maximize();

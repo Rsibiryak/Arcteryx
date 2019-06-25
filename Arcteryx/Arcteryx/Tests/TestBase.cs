@@ -1,7 +1,6 @@
 ﻿using Arcteryx.Pages;
 using Arcteryx.Utils;
 using NUnit.Framework;
-using System.Collections.Generic;
 
 namespace Arcteryx.Tests
 {
