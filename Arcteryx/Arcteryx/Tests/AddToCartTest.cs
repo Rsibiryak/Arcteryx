@@ -32,7 +32,7 @@ namespace Arcteryx.Tests
         [Test]
         public void AddCartTest()
         {
-            ItemPg.SelectColor(Enums.Colors.RedBeach).SelectSize("S").AddToCartClick().CloseCartWindow();
+            ItemPg.SelectColor(Enums.Colors.Red_Beach).SelectSize("S").AddToCartClick().CloseCartWindow();
             Assert.AreEqual(1, ItemPg.GetCartItemsCount());        
         }
     }

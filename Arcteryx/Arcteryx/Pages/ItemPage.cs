@@ -52,8 +52,8 @@ namespace Arcteryx.Pages
         public ItemPage SelectColor(Enum colors)
         {
             String locator;
-            String color;
-
+            String color = colors.ToString().Replace('_', ' ');
+            /*
             switch(colors)
             {
                 case Enums.Colors.RedBeach:
@@ -68,11 +68,10 @@ namespace Arcteryx.Pages
                 case Enums.Colors.Pilot:
                     color = "Pilot";
                     break;
-
                 default:
                     color = "Red Beach";
                     throw new Exception("Incorrect color");
-            }
+            } */
 
             locator = $"//div[@data-name='{color}']";
             FindByXpath(locator).Click();

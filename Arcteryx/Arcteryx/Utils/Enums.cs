@@ -20,8 +20,8 @@ namespace Arcteryx.Utils
 
         public enum Colors
         {
-            RedBeach,
-            HoweSound,
+            Red_Beach,
+            Howe_Sound,
             Pilot,
             Black
         }
