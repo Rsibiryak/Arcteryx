@@ -15,6 +15,7 @@ namespace Arcteryx.Tests
         protected ItemsPage ItemsPg { get; set; }
         protected ItemPage ItemPg { get; set; }
 
+        /*
         private static IEnumerable<TestCaseData> Browser
         {
             get
@@ -23,13 +24,13 @@ namespace Arcteryx.Tests
                /// yield return new TestCaseData("firefox");
             }
         }
+        */
 
-     //   [OneTimeSetUp]
- 
+      [OneTimeSetUp]
       //  [Test, TestCaseSource(nameof(Browser))]
-        public void BeforeTest(string browserName)
+        public void BeforeTest()
         {
-            Manager = AppManager.GetInstance(browserName);
+            Manager = AppManager.GetInstance();
             Manager.ItemPg.OpenPage("Main");
             ItemsPg = Manager.ItemsPg;
             ItemPg = Manager.ItemPg;

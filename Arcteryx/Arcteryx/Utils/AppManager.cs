@@ -16,9 +16,9 @@ namespace Arcteryx.Utils
         private string _gridURL = ConfigurationManager.AppSettings["seleniumGridURL"];
         //http://localhost:4444/grid/console
 
-        private AppManager(String browserName)
+        private AppManager()
         {
-            //string browserName = "chrome";  //firefox
+            string browserName = "chrome";  //firefox  chrome
 
             DesiredCapabilities capabilities = new DesiredCapabilities(); 
             capabilities.SetCapability(CapabilityType.BrowserName, browserName);
@@ -31,11 +31,11 @@ namespace Arcteryx.Utils
         }
 
 
-        public static AppManager GetInstance(String browserName)
+        public static AppManager GetInstance()
         {
             if (Instance == null)
             {
-                Instance = new AppManager(browserName);
+                Instance = new AppManager();
             }
             return Instance;
         }
