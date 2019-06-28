@@ -35,7 +35,14 @@ namespace Arcteryx.Tests
         public void CheckMenuCart()
         {
             ItemsPg.MainMenuClick("Cart");
-            Assert.AreEqual("YOU CURRENTLY HAVE NO ITEMS IN YOUR SHOPPING CART.", ItemsPg.GetLable("Cart"));
+            if (ItemsPg.GetCartItemsCount() == 0 )
+            {
+                Assert.AreEqual("YOU CURRENTLY HAVE NO ITEMS IN YOUR SHOPPING CART.", ItemsPg.GetLable("Empty cart"));
+            }
+            else
+            {
+                Assert.AreEqual("Continue Checkout", ItemsPg.GetLable("Cart"));
+            }           
         }
     }
 }

@@ -53,25 +53,6 @@ namespace Arcteryx.Pages
         {
             String locator;
             String color = colors.ToString().Replace('_', ' ');
-            /*
-            switch(colors)
-            {
-                case Enums.Colors.RedBeach:
-                    color = "Red Beach";  
-                    break;
-                case Enums.Colors.HoweSound:
-                    color = "Red Beach";
-                    break;
-                case Enums.Colors.Black:
-                    color = "Black";
-                    break;
-                case Enums.Colors.Pilot:
-                    color = "Pilot";
-                    break;
-                default:
-                    color = "Red Beach";
-                    throw new Exception("Incorrect color");
-            } */
 
             locator = $"//div[@data-name='{color}']";
             FindByXpath(locator).Click();

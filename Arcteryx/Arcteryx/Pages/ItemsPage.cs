@@ -16,6 +16,7 @@ namespace Arcteryx.Pages
         protected const String MEN_LABLE = "//span[@itemprop= 'name' and contains(text(),'Men')]";
         protected const String WOMEN_LABLE = "//span[@itemprop= 'name' and contains(text(),'Women')]";
         protected const String EMPTY_CART_LABLE = "//h1[contains(text(), 'YOU CURRENTLY HAVE NO ITEMS IN YOUR SHOPPING CART.')]";
+        protected const String CHECKOUT_LABEL = "//a[contains(text(), 'Continue Checkout')]";
         protected const String BETA_SV_JACKET = "//span[contains(text(), 'Beta SV Jacket')]";
         protected const String SHELL_JACKET_LABLE = "//span[contains(text(),'Shell Jackets')]";
         #endregion
@@ -41,8 +42,11 @@ namespace Arcteryx.Pages
                 case "Women":
                     locator = WOMEN_LABLE;
                     break;
-                case "Cart":
+                case "Empty cart":
                     locator = EMPTY_CART_LABLE;
+                    break;
+                case "Cart":
+                    locator = CHECKOUT_LABEL;
                     break;
                 case "Shell Jackets":
                     locator = SHELL_JACKET_LABLE;
@@ -50,7 +54,6 @@ namespace Arcteryx.Pages
                 default:
                     throw new Exception("Incorrect label name");
             }
-
             return FindByXpath(locator).GetAttribute("textContent");
         }
 

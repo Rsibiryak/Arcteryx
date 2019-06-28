@@ -114,7 +114,7 @@ namespace Arcteryx.Pages
         }
 
         /// <summary>
-        /// Get  quantity of item from the cart.
+        /// Get quantity of item from the cart.
         /// </summary>
         /// <returns></returns>
         public int GetCartItemsCount()
