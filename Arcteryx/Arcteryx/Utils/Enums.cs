@@ -15,7 +15,7 @@ namespace Arcteryx.Utils
            M,
            L,
            XL,
-           XXL
+           XXL 
         }
 
         public enum Colors
