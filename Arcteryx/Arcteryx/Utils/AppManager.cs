@@ -1,4 +1,5 @@
 ﻿using Arcteryx.Pages;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
@@ -18,7 +19,10 @@ namespace Arcteryx.Utils
 
         private AppManager()
         {
-            string browserName = "chrome";  //firefox  chrome
+            string browserName = TestContext.Parameters["browserType"];
+
+
+          //  string browserName = "chrome";  //firefox  chrome
 
            DesiredCapabilities capabilities = new DesiredCapabilities(); 
            capabilities.SetCapability(CapabilityType.BrowserName, browserName);
