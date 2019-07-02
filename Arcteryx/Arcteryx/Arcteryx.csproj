@@ -51,6 +51,9 @@
     <Reference Include="ReportPortal.Client, Version=2.1.13.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ReportPortal.Client.2.1.13\lib\net45\ReportPortal.Client.dll</HintPath>
     </Reference>
+    <Reference Include="ReportPortal.Log4Net, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReportPortal.Log4Net.1.2.2\lib\net45\ReportPortal.Log4Net.dll</HintPath>
+    </Reference>
     <Reference Include="ReportPortal.NUnitExtension, Version=3.7.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ReportPortal.NUnit.3.7.5\lib\net45\ReportPortal.NUnitExtension.dll</HintPath>
     </Reference>
@@ -79,6 +82,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\AddToCartTest.cs" />
     <Compile Include="Tests\MainMenuTest.cs" />
+    <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\SetUp.cs" />
     <Compile Include="Tests\TestBase.cs" />
     <Compile Include="Utils\AppManager.cs" />

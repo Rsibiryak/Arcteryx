@@ -2,7 +2,7 @@
   "enabled": true,
   "server": {
     "url": "https://rp.epam.com/api/v1",
-    "project": "Arcteryx",
+    "project": "ALEXANDER_SUVOROV_PERSONAL",
     "authentication": {
       "uuid": "74107f85-4e1d-436b-8722-b47da8b8106a"
     }
@@ -14,3 +14,4 @@
     "tags": [ "chrome", "firefox" ]
   }
 }
+

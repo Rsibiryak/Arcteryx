@@ -32,6 +32,10 @@ namespace Arcteryx.Utils
 
             ItemsPg = new ItemsPage(this);
             ItemPg = new ItemPage(this);
+
+            Logger.InitLogger();
+            Logger.Log.Info("Ура заработало!");
+            Logger.Log.Error("Ошибочка вышла!");
         }
 
 
