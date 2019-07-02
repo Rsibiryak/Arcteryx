@@ -19,20 +19,13 @@ namespace Arcteryx.Utils
 
         private AppManager()
         {
+            //read data from nunit console
             string browserName = TestContext.Parameters["browserType"];
 
+            //string browserName = "chrome";  //firefox  chrome   for manual running
 
-          //  string browserName = "chrome";  //firefox  chrome
-
-           DesiredCapabilities capabilities = new DesiredCapabilities(); 
-           capabilities.SetCapability(CapabilityType.BrowserName, browserName);
-
-
-          //  var capabilities = new RemoteSessionSettings();
-           // capabilities.AddMetadataSetting("browserName", browserName);
-           // capabilities.AddMetadataSetting("platform", "Windows 10");
-            //RemoteWebDriver driver = new RemoteWebDriver(new Uri("http://hub.crossbrowsertesting.com:80/wd/hub"), capabilities);
-
+            DesiredCapabilities capabilities = new DesiredCapabilities(); 
+            capabilities.SetCapability(CapabilityType.BrowserName, browserName);
 
             Driver = new RemoteWebDriver(new Uri(_gridURL), capabilities);
             Driver.Manage().Window.Maximize();
