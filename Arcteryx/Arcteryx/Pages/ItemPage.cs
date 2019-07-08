@@ -117,6 +117,7 @@ namespace Arcteryx.Pages
         {
             FindByXpath(ADD_TO_CART_BUTTON).Click();
             return this;
+  
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Arcteryx.Pages
         public ItemPage CloseCartWindow()
         {
             FindByXpath(CHECKOUT_BUTTON);
-            FindByXpath(EMPTY_CLICK).Click();
+            FindByXpath(EMPTY_CLICK).Click();          
             return this;
         }
     }

@@ -18,7 +18,7 @@ namespace Arcteryx.Tests
         {
             ItemsPg.OpenPage("MenShellJacket");
             Assert.AreEqual("Shell Jackets", ItemsPg.GetLable("Shell Jackets"));
-            ItemsPg.OpenItemPage("BETA_SV_JACKET");                
+            ItemsPg.OpenItemPage("BETA_SV_JACKET");
         }
 
         /// <summary>
@@ -28,7 +28,8 @@ namespace Arcteryx.Tests
         public void AddCartTest()
         {
             ItemPg.SelectColor(Enums.Colors.Red_Beach).SelectSize("S").AddToCartClick().CloseCartWindow();
-            Assert.AreEqual(1, ItemPg.GetCartItemsCount());        
+            Assert.AreEqual(11, ItemPg.GetCartItemsCount());        
         }
+
     }
 }

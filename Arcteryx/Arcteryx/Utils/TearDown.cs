@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Arcteryx.Tests
 {
     [SetUpFixture]
-    public class SetUp
+    public class TearDown
     {
  
   

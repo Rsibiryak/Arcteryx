@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Configuration;
+using System.Drawing.Imaging;
 
 namespace Arcteryx.Pages
 {
@@ -16,7 +17,8 @@ namespace Arcteryx.Pages
         public String Url { get; private set;}
 
         private const int TIMEOUT = 7;
-        
+        private string _screenPath = ConfigurationManager.AppSettings["screenshotPath"];
+
         /// <summary>
         /// Locators for web elements.
         /// </summary>
@@ -122,7 +124,7 @@ namespace Arcteryx.Pages
             int itemsCount;
             try
             {             
-                itemsCount = Convert.ToInt32(ExpandRootElement(MAIN_MENU_SECTION, CART_ITEMS).GetAttribute("outerText"));
+                itemsCount = Convert.ToInt32(ExpandRootElement(MAIN_MENU_SECTION, CART_ITEMS).GetAttribute("innerText"));
             }
             catch
             {
@@ -145,5 +147,39 @@ namespace Arcteryx.Pages
             {
             }
         }
+
+        /// <summary>
+        /// Check visibility of element.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public Func<IWebDriver, bool> ElementIsVisible(IWebElement element)
+        {
+            return (d) =>
+            {
+                try
+                {
+                    return element.Displayed;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            };
+        }
+
+        public void TakeScreenshot(String screenName)
+        {
+            try
+            {
+                Screenshot ss = ((ITakesScreenshot)Driver).GetScreenshot();
+                ss.SaveAsFile(_screenPath + screenName + ".jpg");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
     }
 }

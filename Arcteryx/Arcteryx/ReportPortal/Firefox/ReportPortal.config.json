@@ -4,14 +4,14 @@
     "url": "https://rp.epam.com/api/v1",
     "project": "ALEXANDER_SUVOROV_PERSONAL",
     "authentication": {
-      "uuid": "74107f85-4e1d-436b-8722-b47da8b8106a"
+      "uuid": "c0b47971-1e66-4901-a076-ee1ec3303a5e"
     }
   },
   "launch": {
-    "name": "Tests launch",
+    "name": "Firefox launch",
     "description": "Initial launch",
     "debugMode": true,
-    "tags": [ "chrome", "firefox" ]
+    "tags": ["firefox"]
   }
 }
 

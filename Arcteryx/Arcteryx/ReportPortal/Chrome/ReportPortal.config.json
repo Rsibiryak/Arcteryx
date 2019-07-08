@@ -1,0 +1,17 @@
+﻿{
+  "enabled": true,
+  "server": {
+    "url": "https://rp.epam.com/api/v1",
+    "project": "ALEXANDER_SUVOROV_PERSONAL",
+    "authentication": {
+      "uuid": "c0b47971-1e66-4901-a076-ee1ec3303a5e"
+    }
+  },
+  "launch": {
+    "name": "Сhrome launch",
+    "description": "Initial launch",
+    "debugMode": true,
+    "tags": ["chrome"]
+  }
+}
+

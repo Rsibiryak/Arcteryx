@@ -1,6 +1,8 @@
 ﻿using Arcteryx.Pages;
 using Arcteryx.Utils;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
+using System;
 
 namespace Arcteryx.Tests
 {
@@ -14,19 +16,7 @@ namespace Arcteryx.Tests
         protected ItemsPage ItemsPg { get; set; }
         protected ItemPage ItemPg { get; set; }
 
-        /*
-        private static IEnumerable<TestCaseData> Browser
-        {
-            get
-            {
-                yield return new TestCaseData("chrome");
-               /// yield return new TestCaseData("firefox");
-            }
-        }
-        */
-
-      [OneTimeSetUp]
-      //  [Test, TestCaseSource(nameof(Browser))]
+        [OneTimeSetUp]
         public void BeforeTest()
         {
             Manager = AppManager.GetInstance();
@@ -35,10 +25,16 @@ namespace Arcteryx.Tests
             ItemPg = Manager.ItemPg;
         }
 
-       //[OneTimeTearDown]
+        [TearDown]
         public void AfterTest()
         {
-            Manager.Driver.Quit();
+            String screenshotName;
+
+            if (TestContext.CurrentContext.Result.Outcome.ToString() == "Failed")
+            {
+                screenshotName = TestContext.CurrentContext.Test.Name + " " + DateTime.Now.ToString("yyyy.MM.dd") +" "+ DateTime.Now.ToString("hh.mm.ss");
+                ItemPg.TakeScreenshot(screenshotName);
+            }           
         }
     }
 }
