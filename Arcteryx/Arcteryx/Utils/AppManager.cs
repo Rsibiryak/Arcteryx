@@ -20,9 +20,7 @@ namespace Arcteryx.Utils
         private AppManager()
         {
             //read data from nunit console
-            string browserName = TestContext.Parameters["browserType"];
-
-            //string browserName = "chrome";  //firefox  chrome   for manual running
+            string browserName = TestContext.Parameters["browserType"];  //string browserName = "chrome";  firefox or chrome  for manual running
 
             DesiredCapabilities capabilities = new DesiredCapabilities(); 
             capabilities.SetCapability(CapabilityType.BrowserName, browserName);

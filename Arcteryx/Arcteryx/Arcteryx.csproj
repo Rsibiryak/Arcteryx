@@ -92,6 +92,7 @@
     <Compile Include="Tests\AddToCartTest.cs" />
     <Compile Include="Tests\MainMenuTest.cs" />
     <Compile Include="Utils\Logger.cs" />
+    <Compile Include="Utils\ScreenCapture.cs" />
     <Compile Include="Utils\TearDown.cs" />
     <Compile Include="Tests\TestBase.cs" />
     <Compile Include="Utils\AppManager.cs" />

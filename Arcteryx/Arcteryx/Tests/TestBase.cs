@@ -1,7 +1,6 @@
 ﻿using Arcteryx.Pages;
 using Arcteryx.Utils;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using System;
 
 namespace Arcteryx.Tests
@@ -28,12 +27,12 @@ namespace Arcteryx.Tests
         [TearDown]
         public void AfterTest()
         {
-            String screenshotName;
+            string screenshotName;
 
             if (TestContext.CurrentContext.Result.Outcome.ToString() == "Failed")
             {
                 screenshotName = TestContext.CurrentContext.Test.Name + " " + DateTime.Now.ToString("yyyy.MM.dd") +" "+ DateTime.Now.ToString("hh.mm.ss");
-                ItemPg.TakeScreenshot(screenshotName);
+                ScreenCapture.TakeScreenshot(screenshotName);
             }           
         }
     }

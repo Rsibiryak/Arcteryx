@@ -3,7 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Configuration;
-using System.Drawing.Imaging;
 
 namespace Arcteryx.Pages
 {
@@ -17,7 +16,6 @@ namespace Arcteryx.Pages
         public String Url { get; private set;}
 
         private const int TIMEOUT = 7;
-        private string _screenPath = ConfigurationManager.AppSettings["screenshotPath"];
 
         /// <summary>
         /// Locators for web elements.
@@ -36,7 +34,6 @@ namespace Arcteryx.Pages
         {
             this.Driver = appManager.Driver;
             Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(TIMEOUT));
-
             Url = ConfigurationManager.AppSettings["appUrl"];
         }
 
@@ -167,19 +164,5 @@ namespace Arcteryx.Pages
                 }
             };
         }
-
-        public void TakeScreenshot(String screenName)
-        {
-            try
-            {
-                Screenshot ss = ((ITakesScreenshot)Driver).GetScreenshot();
-                ss.SaveAsFile(_screenPath + screenName + ".jpg");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
     }
 }
